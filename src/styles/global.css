@@ -3,4 +3,17 @@ body {
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    color: #fff;
+}
+
+.wrapper {
+    max-width: 70rem;
+    background-color: red;
+    margin: 2rem auto;
+    padding: 0 1rem;
+
+    display: grid;
+    grid-template-columns: 256px 1fr;
+    gap: 2rem;
+    align-items: flex-start;
 }
