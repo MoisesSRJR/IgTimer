@@ -119,3 +119,7 @@ export const CommentForm = styled.div`
         }
     }
 `;
+
+export const CommentList = styled.div`
+    margin-top: 2rem;
+`;

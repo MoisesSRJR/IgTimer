@@ -1,4 +1,5 @@
-import { CommentForm, Content, MainContainer } from './styles'
+import { Comment } from '../Comment/Index'
+import { CommentForm, CommentList, Content, MainContainer } from './styles'
 
 export function Post () {
     return (
@@ -37,6 +38,11 @@ export function Post () {
                     </footer>
                 </form>
             </CommentForm>
+            <CommentList>
+                <Comment />
+                <Comment />
+                <Comment />
+            </CommentList>
         </MainContainer>
     )
 }
