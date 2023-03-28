@@ -1,3 +1,4 @@
+import { Avatar } from '../Avatar/Index'
 import { Comment } from '../Comment/Index'
 import { CommentForm, CommentList, Content, MainContainer } from './styles'
 
@@ -6,7 +7,9 @@ export function Post () {
         <MainContainer>
             <header>
                 <div className='author'>
-                    <img src='https://github.com/MoisesSRJR.png' />
+                    <Avatar
+                        image='https://github.com/MoisesSRJR.png'
+                    />
                     <div className='authorInfo'>
                         <strong>Moises junior</strong>
                         <span>Web Developer</span>

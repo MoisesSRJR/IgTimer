@@ -1,11 +1,16 @@
 import { ThumbsUp, Trash } from '@phosphor-icons/react'
+import { Avatar } from '../Avatar/Index'
+
 import { CommentBox, CommentContainer, Content } from './styles'
 
 export function Comment () {
     return (
         <CommentContainer>
-             <img src='https://github.com/MoisesSRJR.png' alt=''/>
-             <CommentBox>
+            <Avatar
+            hasBorder={false}
+            image='https://github.com/MoisesSRJR.png'
+            />
+            <CommentBox>
                 <Content>
                     <header>
                         <div className='authorAndTime'>
@@ -27,7 +32,7 @@ export function Comment () {
                         <span>28</span>
                     </button>
                 </footer>
-             </CommentBox>
+            </CommentBox>
         </CommentContainer>
     )
 }

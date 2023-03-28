@@ -18,15 +18,6 @@ export const SidebarContainer = styled.aside`
         align-items: center;
         margin-top: -2.5rem;
 
-        img {
-            box-sizing: initial;
-            width: calc(3rem + 12px);
-            height: calc(3rem + 12px);
-            border-radius: 8px;
-            border: 4px solid ${colors.gray700};
-            outline: 2px solid ${colors.green200};
-        }
-
         strong {
             margin-top: 1rem;
             color: ${colors.gray200};
