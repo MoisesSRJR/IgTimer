@@ -76,6 +76,11 @@ export const CommentForm = styled.div`
     padding-top: 1.5rem;
     border-top: 1px solid ${colors.gray600};
 
+    :focus-within footer {
+        visibility: visible;
+        max-height: none;
+    }
+
     strong {
         line-height: 1.6;
         color: ${colors.gray200};
@@ -92,6 +97,11 @@ export const CommentForm = styled.div`
         color: ${colors.gray200};
         margin-top: 1rem;
         line-height: 1.4;
+    }
+
+    footer {
+        visibility: hidden;
+        max-height: 0;
     }
 
     button[type=submit] {

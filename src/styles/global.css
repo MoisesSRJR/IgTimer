@@ -6,6 +6,11 @@ body {
     color: #fff;
 }
 
+:focus {
+    outline: transparent;
+    box-shadow: 0 0 0 2px #00875f;
+}
+
 .wrapper {
     max-width: 70rem;
     margin: 2rem auto;
