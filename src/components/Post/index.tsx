@@ -2,6 +2,11 @@ import { Avatar } from '../Avatar/Index'
 import { Comment } from '../Comment/Index'
 import { CommentForm, CommentList, Content, MainContainer } from './styles'
 
+interface PostProps {
+    image: string;
+    
+}
+
 export function Post () {
     return (
         <MainContainer>
