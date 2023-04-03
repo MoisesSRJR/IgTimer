@@ -1,39 +1,57 @@
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+
 import { Avatar } from '../Avatar/Index'
 import { Comment } from '../Comment/Index'
+
 import { CommentForm, CommentList, Content, MainContainer } from './styles'
 
 interface PostProps {
     image: string;
-    
+    name: string;
+    role: string;
+    date: Date;
+    _content: {
+        type: string;
+        content: string;
+    }[];
 }
 
-export function Post () {
+export function Post({ image, name, role, _content, date }: PostProps) {
+    const dateFormatted = new Intl.DateTimeFormat('pt-BR', {
+        day: '2-digit',
+        month: 'long',
+        hour: '2-digit',
+        minute: '2-digit'
+    }).format(date)
+
+    const publishedDateNow = formatDistanceToNow(date, {
+        locale: ptBR,
+        addSuffix: true
+    })
+
     return (
         <MainContainer>
             <header>
                 <div className='author'>
                     <Avatar
-                        image='https://github.com/MoisesSRJR.png'
+                        image={image}
                     />
                     <div className='authorInfo'>
-                        <strong>Moises junior</strong>
-                        <span>Web Developer</span>
+                        <strong>{name}</strong>
+                        <span>{role}</span>
                     </div>
                 </div>
-                <time title='27 de março de 2023' dateTime='2023-03-27'>Publicado há 1h</time>
+                <time title={dateFormatted} dateTime={date.toISOString()}>{publishedDateNow}</time>
             </header>
             <Content>
-                <p>Fala galeraa 👋</p>
-                <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
-                <p>
-                    👉{' '}
-                    <a href=''>jane.design/doctorcare</a>
-                </p>
-                <p>
-                    <a href=''>#novoprojeto</a>{' '}
-                    <a href=''>#nlw </a>{' '}
-                    <a href=''>#rocketseat</a>{' '}
-                </p>
+                {_content.map((item, index) => {
+                    if (item.type === 'paragraph') {
+                        return <p key={index}>{item.content}</p>;
+                    } else {
+                        return <a key={index} href='#'>{item.content}</a>;
+                    }
+                })}
             </Content>
             <CommentForm>
                 <form>

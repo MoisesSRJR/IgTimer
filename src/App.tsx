@@ -13,7 +13,7 @@ const posts = [
             role: 'Dev front-end Pleno'
         },
         content: [
-            { type: 'paragraph', content: 'Fala galera 👋' },
+            { type: 'paragraph', content: 'Fala Amigos 👋' },
             { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
             { type: 'link', content: 'jane.design/doctorcare' },
         ],
@@ -27,8 +27,6 @@ const posts = [
             role: 'Educator @Rocketseat'
         },
         content: [
-            { type: 'paragraph', content: 'Fala galera 👋' },
-            { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
             { type: 'link', content: 'jane.design/doctorcare' },
         ],
         publishedAt: new Date('2023-03-28 10:00:00'),
@@ -46,8 +44,11 @@ function App() {
                     {posts.map(post => {
                         return (
                             <Post
-
-
+                                image={post.author.avatarUrl}
+                                name={post.author.name}
+                                role={post.author.role}
+                                date={post.publishedAt}
+                                _content={post.content}
                             />
                         )
                     })}
