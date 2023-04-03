@@ -3,12 +3,18 @@ import { Avatar } from '../Avatar/Index'
 
 import { CommentBox, CommentContainer, Content } from './styles'
 
-export function Comment () {
+interface CommentProps {
+    name?: string;
+    date?: Date;
+    comentarys?: string;
+}
+
+export function Comment ({ name, date, comentarys }: CommentProps) {
     return (
         <CommentContainer>
             <Avatar
-            hasBorder={false}
-            image='https://github.com/MoisesSRJR.png'
+                hasBorder={false}
+                image='https://github.com/MoisesSRJR.png'
             />
             <CommentBox>
                 <Content>
@@ -22,7 +28,7 @@ export function Comment () {
                         </button>
                     </header>
                     <p>
-                        Muito bom Devon, parabéns!! 👏👏
+                        {comentarys}
                     </p>
                 </Content>
                 <footer>

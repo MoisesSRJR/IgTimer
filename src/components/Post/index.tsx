@@ -5,6 +5,7 @@ import { Avatar } from '../Avatar/Index'
 import { Comment } from '../Comment/Index'
 
 import { CommentForm, CommentList, Content, MainContainer } from './styles'
+import { useState } from 'react'
 
 interface PostProps {
     image: string;
@@ -18,6 +19,8 @@ interface PostProps {
 }
 
 export function Post({ image, name, role, _content, date }: PostProps) {
+    const [comment, setComment] = useState(['Esse post é demais'])
+
     const dateFormatted = new Intl.DateTimeFormat('pt-BR', {
         day: '2-digit',
         month: 'long',
@@ -29,6 +32,13 @@ export function Post({ image, name, role, _content, date }: PostProps) {
         locale: ptBR,
         addSuffix: true
     })
+
+    
+
+    function handleCreateNewComment() {
+        event?.preventDefault()
+        setComment([...comment, (comment.length + 1).toString()]);
+    }
 
     return (
         <MainContainer>
@@ -54,7 +64,7 @@ export function Post({ image, name, role, _content, date }: PostProps) {
                 })}
             </Content>
             <CommentForm>
-                <form>
+                <form onSubmit={handleCreateNewComment}>
                     <strong>Deixe seu feedback</strong>
                     <textarea
                         placeholder='Deixe um comentario'
@@ -65,9 +75,9 @@ export function Post({ image, name, role, _content, date }: PostProps) {
                 </form>
             </CommentForm>
             <CommentList>
-                <Comment />
-                <Comment />
-                <Comment />
+                {comment.map(comments => {
+                    return <Comment comentarys={comments} />
+                })}
             </CommentList>
         </MainContainer>
     )
