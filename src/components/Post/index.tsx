@@ -1,3 +1,4 @@
+import { ChangeEvent, FormEvent, useState } from "react";
 import { formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
@@ -5,7 +6,6 @@ import { Avatar } from '../Avatar/Index'
 import { Comment } from '../Comment/Index'
 
 import { CommentForm, CommentList, Content, MainContainer } from './styles'
-import { useState } from 'react'
 
 interface PostProps {
     image: string;
@@ -20,6 +20,7 @@ interface PostProps {
 
 export function Post({ image, name, role, _content, date }: PostProps) {
     const [comment, setComment] = useState(['Esse post é demais'])
+    const [newCommentText, setNewCommentText] = useState('')
 
     const dateFormatted = new Intl.DateTimeFormat('pt-BR', {
         day: '2-digit',
@@ -33,11 +34,14 @@ export function Post({ image, name, role, _content, date }: PostProps) {
         addSuffix: true
     })
 
-    
+    function handleCreateNewComment(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        setComment([...comment, newCommentText.toString()]);
+        setNewCommentText('')
+    }
 
-    function handleCreateNewComment() {
-        event?.preventDefault()
-        setComment([...comment, (comment.length + 1).toString()]);
+    function handleNewCommentChange (event: ChangeEvent<HTMLTextAreaElement>) {
+        setNewCommentText(event?.target.value)
     }
 
     return (
@@ -67,7 +71,10 @@ export function Post({ image, name, role, _content, date }: PostProps) {
                 <form onSubmit={handleCreateNewComment}>
                     <strong>Deixe seu feedback</strong>
                     <textarea
+                        name='comment'
                         placeholder='Deixe um comentario'
+                        value={newCommentText}
+                        onChange={handleNewCommentChange}
                     />
                     <footer>
                         <button type='submit'>Publicar</button>
