@@ -43,6 +43,7 @@ function App() {
                     {posts.map(post => {
                         return (
                             <Post
+                                key={post.id}
                                 image={post.author.avatarUrl}
                                 name={post.author.name}
                                 role={post.author.role}

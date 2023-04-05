@@ -7,9 +7,15 @@ interface CommentProps {
     name?: string;
     date?: Date;
     comentarys?: string;
+    onDeleteComment: any;
 }
 
-export function Comment ({ name, date, comentarys }: CommentProps) {
+export function Comment ({ name, date, comentarys, onDeleteComment }: CommentProps) {
+
+    function handleDeleteComment() {
+        onDeleteComment(comentarys)
+    }
+
     return (
         <CommentContainer>
             <Avatar
@@ -23,7 +29,7 @@ export function Comment ({ name, date, comentarys }: CommentProps) {
                             <strong>Moisés Junior</strong>
                             <time title='27 de março de 2023' dateTime='2023-03-27'>cerca de 1hr atrás</time>
                         </div>
-                        <button title='Deletar comentário'>
+                        <button onClick={handleDeleteComment} title='Deletar comentário'>
                             <Trash size={24}/>
                         </button>
                     </header>

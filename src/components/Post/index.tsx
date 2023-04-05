@@ -34,6 +34,8 @@ export function Post({ image, name, role, _content, date }: PostProps) {
         addSuffix: true
     })
 
+    const isNewCommentEmpty = newCommentText.length === 0;
+
     function handleCreateNewComment(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
         setComment([...comment, newCommentText.toString()]);
@@ -41,7 +43,19 @@ export function Post({ image, name, role, _content, date }: PostProps) {
     }
 
     function handleNewCommentChange (event: ChangeEvent<HTMLTextAreaElement>) {
+        event?.target.setCustomValidity('')
         setNewCommentText(event?.target.value)
+    }
+
+    function handleNewCommentInvalid (event: ChangeEvent<HTMLTextAreaElement>) {
+        event?.target.setCustomValidity('Esse campo é obrigatório')
+    }
+
+    function deleteComment (commentToDelete: string) {
+        const commentsWithouDeleteOne = comment.filter(comment => {
+            return comment !== commentToDelete;
+        })
+        setComment(commentsWithouDeleteOne);
     }
 
     return (
@@ -59,11 +73,11 @@ export function Post({ image, name, role, _content, date }: PostProps) {
                 <time title={dateFormatted} dateTime={date.toISOString()}>{publishedDateNow}</time>
             </header>
             <Content>
-                {_content.map((item, index) => {
+                {_content.map(item => {
                     if (item.type === 'paragraph') {
-                        return <p key={index}>{item.content}</p>;
+                        return <p key={item.content}>{item.content}</p>;
                     } else {
-                        return <a key={index} href='#'>{item.content}</a>;
+                        return <a key={item.content} href='#'>{item.content}</a>;
                     }
                 })}
             </Content>
@@ -75,15 +89,28 @@ export function Post({ image, name, role, _content, date }: PostProps) {
                         placeholder='Deixe um comentario'
                         value={newCommentText}
                         onChange={handleNewCommentChange}
+                        onInvalid={handleNewCommentInvalid}
+                        required
                     />
                     <footer>
-                        <button type='submit'>Publicar</button>
+                        <button
+                            type='submit'
+                            disabled={isNewCommentEmpty}
+                        >
+                            Publicar
+                        </button>
                     </footer>
                 </form>
             </CommentForm>
             <CommentList>
                 {comment.map(comments => {
-                    return <Comment comentarys={comments} />
+                    return (
+                        <Comment
+                            key={comments}
+                            comentarys={comments}
+                            onDeleteComment={deleteComment}
+                        />
+                    )
                 })}
             </CommentList>
         </MainContainer>

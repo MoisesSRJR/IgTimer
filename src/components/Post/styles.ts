@@ -87,7 +87,9 @@ export const CommentForm = styled.div`
         border-radius: 8px;
         color: ${colors.gray200};
         margin-top: 1rem;
+
         line-height: 1.4;
+        font-family: 'Roboto', sans-serif;
     }
 
     footer {
@@ -107,6 +109,15 @@ export const CommentForm = styled.div`
 
         :hover {
             background-color: ${colors.green100};
+        }
+    }
+
+    button[type=submit]:disabled {
+        background-color: ${colors.gray400};
+        cursor: not-allowed;
+
+        :hover {
+            background-color: ${colors.gray400};
         }
     }
 `;
