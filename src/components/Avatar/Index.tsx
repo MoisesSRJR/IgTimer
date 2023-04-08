@@ -10,7 +10,7 @@ export function Avatar ({ image, hasBorder }: AvatarProps) {
 
     return (
         <AvatarContainer>
-            <img className={border ? 'withBorder' : 'avatar'} src={image} alt='' />
+            <img className={border ? 'withBorder' : 'avatarImg'} src={image} alt='Avatar Image' />
         </AvatarContainer>
     )
 }

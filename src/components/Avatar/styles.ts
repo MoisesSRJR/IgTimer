@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import colors from '../../styles/colors';
 
 export const AvatarContainer = styled.div`
-    .avatar {
+    .avatarImg {
         box-sizing: initial;
         width: 3rem;
         height: 3rem;

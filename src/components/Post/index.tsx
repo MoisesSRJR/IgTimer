@@ -59,7 +59,7 @@ export function Post({ image, name, role, _content, date }: PostProps) {
     }
 
     return (
-        <MainContainer>
+        <MainContainer data-testid='post-container'>
             <header>
                 <div className='author'>
                     <Avatar
