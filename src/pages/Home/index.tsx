@@ -1,8 +1,35 @@
+import { Play } from "@phosphor-icons/react";
+import { CountdownContainer, FormContainer, HomeContainer, Separator } from "./styles";
+
 export function Home() {
    return (
-      <>
-         <h1>terste</h1>
-         <h3>teste</h3>
-      </>
+      <HomeContainer>
+         <form action="">
+            <FormContainer>
+               <label htmlFor="task">Vou trabalhar em</label>
+               <input id="task" />
+
+               <label htmlFor="minutesAmount">durante</label>
+               <input type="number" id="minutesAmount" />
+
+               <span>minutos.</span>
+            </FormContainer>
+
+            <CountdownContainer>
+               <span>0</span>
+               <span>0</span>
+
+               <Separator>:</Separator>
+
+               <span>0</span>
+               <span>0</span>
+            </CountdownContainer>
+
+            <button type="submit">
+               <Play size={24} />
+               Começar
+            </button>
+         </form>
+      </HomeContainer>
    )
 }

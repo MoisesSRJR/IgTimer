@@ -1,4 +1,4 @@
 {
 	"extends": "@rocketseat/eslint-config/react",
-  "indent": ["error", 3]
+   "indent": ["error", 3]
 }
