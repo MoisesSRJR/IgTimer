@@ -11,12 +11,15 @@
     "lint": "yarn eslint src --ext .ts,.tsx"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.1.0",
     "@phosphor-icons/react": "^2.0.9",
     "date-fns": "^2.29.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.44.3",
     "react-router-dom": "^6.11.0",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^1.2.0",
