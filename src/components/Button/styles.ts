@@ -1,6 +1,12 @@
+import { ButtonHTMLAttributes } from "react";
 import styled from "styled-components";
 
-export const Button = styled.button`
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+   backgroundColor?: string;
+   hoverBackgroundColor?: string;
+}
+
+export const Button = styled.button<ButtonProps>`
    width: 100%;
    height: 3rem;
    border: 0;
@@ -15,7 +21,7 @@ export const Button = styled.button`
 
    cursor: pointer;
 
-   background-color: ${(props) => props.theme['green-500']};
+   background-color: ${(props) => props.backgroundColor || props.theme['green-500']};
    color: ${(props) => props.theme['gray-100']};
 
    &:disabled {
@@ -24,6 +30,6 @@ export const Button = styled.button`
    }
 
    &:not(:disabled):hover {
-      background-color: ${(props) => props.theme['green-700']};
+      background-color: ${(props) => props.hoverBackgroundColor || props.theme['green-700']};
    }
 `;
